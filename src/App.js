@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import AllRoutes from "./routes";
+// import { useEffect, useState } from 'react';
+// import { ThemeProvider, createTheme } from '@mui/material/styles';
+// import { initializeFirebase } from './firebase.config';
+// import { EXIST_LOCAL_STORAGE } from './services/constants'
+// import { ReactNotifications } from 'react-notifications-component'
+// import 'react-notifications-component/dist/theme.css'
+// import { ThemeModeProvider } from './components/common';
 
+// initializeFirebase()
 function App() {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <ThemeModeProvider>
+    //   <ReactNotifications />
+      <AllRoutes />
+    // </ThemeModeProvider>
+
+
   );
 }
 
