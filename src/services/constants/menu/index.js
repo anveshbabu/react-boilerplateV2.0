@@ -4,26 +4,29 @@ export const MENU = [
     {
         title: "Home",
         icon: <HomeIcon />,
-        isShow:false,
+        link: '/',
+        isShow: false,
     },
     {
         title: "User",
         icon: <PersonIcon />,
-        isShow:false,
+        link:'/users',
+        isShow: false,
     },
     {
         title: "Servicis",
         icon: <PersonIcon />,
-        isShow:false,
-        subMenu: [
-            {
-                title: "Home",
-                icon: <HomeIcon />
-            },
-            {
-                title: "User",
-                icon: <PersonIcon />
-            }
-        ]
+        isShow: false,
+        link:'/services',
+        // subMenu: [
+        //     {
+        //         title: "Home",
+        //         icon: <HomeIcon />
+        //     },
+        //     {
+        //         title: "User",
+        //         icon: <PersonIcon />
+        //     }
+        // ]
     }
 ]

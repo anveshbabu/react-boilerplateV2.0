@@ -13,8 +13,9 @@ import ListItemText from '@mui/material/ListItemText';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import StarBorder from '@mui/icons-material/StarBorder';
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { MENU } from '../../../services/constants'
+import { NavLink } from '../../../components/common'
 const drawerWidth = 240;
 
 export default function SideBar(props) {
@@ -49,9 +50,15 @@ export default function SideBar(props) {
                 <Toolbar />
                 <Box sx={{ overflow: 'auto' }}>
                     <List>
-                        {menuList.map(({ title = '', icon, isShow = false, subMenu = [] }, index) => (
+                        {menuList.map(({ title = '', icon, isShow = false, subMenu = [], link = '' }, index) => (
                             <React.Fragment>
-                                <ListItem key={title} disablePadding>
+                                {/* <Link to={link}> */}
+                                <ListItem key={title} component={NavLink}
+                                    activeClassName={({ isActive }) =>
+                                        isActive ? 'activeLink' : undefined
+                                    }
+                                    to={link}
+                                    disablePadding>
                                     <ListItemButton onClick={() => handleMenuToogle(index)}>
                                         <ListItemIcon >
                                             {icon}
@@ -62,6 +69,7 @@ export default function SideBar(props) {
                                         </React.Fragment>}
                                     </ListItemButton>
                                 </ListItem>
+                                {/* </Link> */}
                                 <Collapse in={isShow} timeout="auto" unmountOnExit>
                                     {subMenu?.map(({ title }) =>
                                         <List component="div" disablePadding key={title}>
@@ -78,11 +86,11 @@ export default function SideBar(props) {
 
                     </List>
                     {/* <Divider /> */}
-                   
+
                 </Box>
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3, pt: 11 }}>
-            <Outlet />
+                <Outlet />
             </Box>
         </Box>
     );

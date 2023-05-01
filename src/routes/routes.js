@@ -30,15 +30,45 @@ const routers = [
       ]
     },
     
+
+    {
+      component: 'AdminLayout',
+      path: '/services',
+      auth: false,
+      exact: false,
+      childrens: [
+       {
+          component: "Services",
+          path: "/",
+          auth: false,
+          exact: true,
+        },
+      ]
+    },
+    
   
   
+    {
+      component: 'AdminLayout',
+      path: '/users',
+      auth: false,
+      exact: false,
+      childrens: [
+       {
+          component: "Users",
+          path: "/",
+          auth: false,
+          exact: true,
+        },
+      ]
+    },
   
   
   
   
     {
       component: "Adminlayout",
-      path: "/user",
+      path: "user",
       auth: false,
       exact: false,
       childrens: [
