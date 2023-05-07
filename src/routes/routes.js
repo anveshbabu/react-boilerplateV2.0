@@ -3,12 +3,12 @@ const routers = [
 
     {
       component: 'AuthLayout',
-      path: '/login',
+      path: '/',
       auth: false,
       exact: false,
       childrens: [
         {
-          component: "Login",
+          component: "LoginPage",
           path: "/",
           auth: false,
           exact: true,
@@ -17,7 +17,7 @@ const routers = [
     },
     {
       component: 'AdminLayout',
-      path: '/',
+      path: '/dashboard',
       auth: false,
       exact: false,
       childrens: [

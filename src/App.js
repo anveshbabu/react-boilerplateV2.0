@@ -1,5 +1,6 @@
 import './App.css';
 import AllRoutes from "./routes";
+import { initializeFirebase } from './services/firebase/firebase.config';
 // import { useEffect, useState } from 'react';
 // import { ThemeProvider, createTheme } from '@mui/material/styles';
 // import { initializeFirebase } from './firebase.config';
@@ -8,7 +9,7 @@ import AllRoutes from "./routes";
 // import 'react-notifications-component/dist/theme.css'
 // import { ThemeModeProvider } from './components/common';
 
-// initializeFirebase()
+initializeFirebase()
 function App() {
 
 
