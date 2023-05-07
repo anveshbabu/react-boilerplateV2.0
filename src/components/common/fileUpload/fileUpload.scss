@@ -1,0 +1,26 @@
+.img-wrape {
+    height: calc(100% - 43.99px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .img-continer {
+        border-style: dashed;
+        border-color: var(--primary-color);
+        border-radius: 5px;
+        cursor: pointer;
+        svg {
+            width: 30%;
+            height: 30%;
+        }
+        .media-close {
+            position: absolute;
+            right: -12px;
+            top: -12px;
+            cursor: pointer;
+            svg {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    }
+}

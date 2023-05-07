@@ -1,0 +1,1 @@
+export {BannerDashboard} from './home'
