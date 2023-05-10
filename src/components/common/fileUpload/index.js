@@ -6,6 +6,7 @@ import './fileUpload.scss'
 const FillUpload = (props) => {
     const inputFile = useRef(null);
     const [file, setFile] = useState('')
+    const [wholeFile, setWholeFile] = useState('')
     const [fileType, setFileType] = useState('')
 
     let {
@@ -13,9 +14,9 @@ const FillUpload = (props) => {
         className = "",
         mediaRatio = MEDIA_RATIO['16:9'],
         accept = "image/*",
-        name="",
-        onChange=()=>{},
-        value=''
+        name = "",
+        onChange = () => { },
+        value = ''
     } = props;
 
     const handleTrigerFileClick = () => {
@@ -30,31 +31,34 @@ const FillUpload = (props) => {
     };
 
 
-    useEffect(()=>{
-        if(onChange){
+    useEffect(() => {
+        if (onChange && file) {
             onChange({
-                target:{
-                    value:file,
+                target: {
+                    value: file,
                     name,
+                    blobFIle: file,
+                    file: wholeFile
                 }
-                
+
             })
         }
 
-    },[file, name, onChange])
+    }, [file, name])
 
-    useEffect(()=>{
-        if(value){
+    useEffect(() => {
+        if (value) {
             setFile(value)
         }
 
-    },[value])
+    }, [])
 
 
     const handleFileChange = (event) => {
         try {
             let input = event.target;
             if (input.files && input.files[0]) {
+                setWholeFile(input.files[0])
                 if (input.files[0].type.includes('image')) {
                     setFileType('image')
                 } else if (input.files[0].type.includes('audio')) {
@@ -63,19 +67,19 @@ const FillUpload = (props) => {
                     setFileType('video')
                 }
                 var reader = new FileReader();
-                console.log('reader------------>',reader)
-                reader.onloadstart = function(event) {
+                console.log('reader------------>', reader)
+                reader.onloadstart = function (event) {
                     console.log('event.start---------------->')
                 };
-                reader.onprogress = function(event) {
+                reader.onprogress = function (event) {
                     if (event.lengthComputable) {
-                       console.log('event.lengthComputable---------------->',event.lengthComputable)
+                        console.log('event.lengthComputable---------------->', event.lengthComputable)
                     }
                 };
-             
+
                 reader.onload = async (e) => {
-                   
-    
+
+
                     if (input.files[0].type.includes('image')) {
                         var image = new Image();
                         image.src = e.target.result;
@@ -109,12 +113,12 @@ const FillUpload = (props) => {
 
                 };
 
-                reader.onloadstart = function(event) {
+                reader.onloadstart = function (event) {
                     console.log('event.start---------------->')
                 };
-                reader.onprogress = function(event) {
+                reader.onprogress = function (event) {
                     if (event.lengthComputable) {
-                       console.log('event.lengthComputable---------------->',event.lengthComputable)
+                        console.log('event.lengthComputable---------------->', event.lengthComputable)
                     }
                 };
 

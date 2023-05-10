@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import './App.css';
 import AllRoutes from "./routes";
 import { initializeFirebase } from './services/firebase/firebase.config';
@@ -5,8 +6,8 @@ import { initializeFirebase } from './services/firebase/firebase.config';
 // import { ThemeProvider, createTheme } from '@mui/material/styles';
 // import { initializeFirebase } from './firebase.config';
 // import { EXIST_LOCAL_STORAGE } from './services/constants'
-// import { ReactNotifications } from 'react-notifications-component'
-// import 'react-notifications-component/dist/theme.css'
+ import { ReactNotifications } from 'react-notifications-component';
+  import 'react-notifications-component/dist/theme.css'
 // import { ThemeModeProvider } from './components/common';
 
 initializeFirebase()
@@ -15,10 +16,10 @@ function App() {
 
 
   return (
-    // <ThemeModeProvider>
-    //   <ReactNotifications />
+     <Fragment>
+      <ReactNotifications />
       <AllRoutes />
-    // </ThemeModeProvider>
+     </Fragment>
 
 
   );

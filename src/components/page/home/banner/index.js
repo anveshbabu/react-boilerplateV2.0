@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { NormalInput, FillUpload, NormalButton } from '../../../common';
 import { MEDIA_RATIO } from '../../../../services/constants'
-import { homeBannerFormObj } from '../../../../model'
+import { homeBannerFormObj,storageObj } from '../../../../model';
+import {storageImageUpload} from '../../../../services/api'
 export const BannerDashboard = () => {
 
     const [bannerForm, setBannerForm] = useState({ ...homeBannerFormObj })
+    const [storageObjForm, setStorageObjForm] = useState({ ...storageObj })
 
 
     const handleChangeForm = (event) => {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-
+        const value = name !== 'img'? target.type === 'checkbox' ? target.checked : target.value:target.file;
+        
+        console.log('bannerForm-------------->',value)
         setBannerForm({
             ...bannerForm,
             [name]: value
@@ -20,7 +23,14 @@ export const BannerDashboard = () => {
 
 const handleFormSubmit=()=>{
 
-    console.log('bannerForm-------------->',bannerForm)
+    const storageObj={
+        fileType:bannerForm.img.type,
+        file:bannerForm.img,
+        name:bannerForm.img.name,
+        path:"home"
+    }
+
+    storageImageUpload(storageObj)
 
 }
 
